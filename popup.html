@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gn</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>gn</h1>
+      <p class="quote">"One must imagine Sisyphus sleeping."</p>
+
+      <div class="add-rule">
+        <input type="text" id="fromUrl" placeholder="from" />
+        <input type="text" id="toUrl" placeholder="to" />
+        <label class="checkbox-label">
+          <input type="checkbox" id="preservePath" />
+          <span class="checkbox-custom"></span>
+          <span>preserve path</span>
+        </label>
+        <div class="btn-row">
+          <button id="addBtn">add</button>
+          <button id="cancelBtn" style="display: none">cancel</button>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <button id="exportBtn">export</button>
+        <button id="importBtn">import</button>
+      </div>
+
+      <div class="rules-section">
+        <div class="rules-header" id="rulesHeader">
+          <span class="section-icon">▼</span>
+          <span class="section-title">rules</span>
+          <span class="rules-count" id="rulesCount">0</span>
+        </div>
+        <div class="rules-list" id="rulesList"></div>
+      </div>
+    </div>
+
+    <input type="file" id="importFile" accept=".json" style="display: none" />
+    <script src="popup.js"></script>
+  </body>
+</html>

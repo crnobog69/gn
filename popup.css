@@ -8,7 +8,7 @@ body {
   width: 380px;
   background: #1e1e2e;
   color: #cdd6f4;
-  font-family: monospace;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
   font-size: 13px;
 }
 
@@ -52,7 +52,7 @@ input[type="text"] {
   border-radius: 4px;
   color: #cdd6f4;
   outline: none;
-  font-family: monospace;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
   font-size: 13px;
 }
 
@@ -124,7 +124,7 @@ button {
   color: #a6e3a1;
   border: 1px solid #45475a;
   border-radius: 4px;
-  font-family: monospace;
+  font-family: 'Courier New', Consolas, Monaco, monospace;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.15s;

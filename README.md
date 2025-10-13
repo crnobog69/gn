@@ -1,8 +1,14 @@
 # gn
 
-a simple url redirect extension for brave browser with catppuccin mocha theme.
+a simple url redirect extension for brave browser (chromium).
 
-"one must imagine sisyphus sleeping."
+## download
+
+```bash
+git clone https://github.com/crnobog69/gn.git
+```
+
+or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip) ( <- click )
 
 ## features
 
@@ -19,7 +25,7 @@ a simple url redirect extension for brave browser with catppuccin mocha theme.
 ## installation
 
 1. open brave browser
-2. navigate to `brave://extensions/`
+2. navigate to [`brave://extensions/`](brave://extensions/)
 3. enable "developer mode" in the top right
 4. click "load unpacked"
 5. select the `gn` folder
@@ -66,7 +72,7 @@ when disabled:
 
 ## theme
 
-uses the beautiful catppuccin mocha color palette.
+uses the beautiful [catppuccin](https://catppuccin.com/palette/) mocha color palette.
 
 ## license
 

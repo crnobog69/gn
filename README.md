@@ -1,69 +1,73 @@
-# gn - URL Redirector
+# gn
 
-A simple, minimalistic URL redirect extension for Brave browser with Catppuccin Mocha theme.
+a simple url redirect extension for brave browser with catppuccin mocha theme.
 
-## Features
+"one must imagine sisyphus sleeping."
 
-- 🔀 Simple URL redirects
-- 🛤️ **Preserve Path** option - redirects maintain the full path (e.g., `github.com/user/repo` → `github.io/user/repo`)
-- ✏️ **Edit rules** - modify existing rules easily
-- 📋 **Copy/Paste rules** - share rules between devices
-- 📤 **Export/Import** - backup and restore all rules
-- 🗂️ **Collapsible rules** - keep your list organized
-- 🎨 Beautiful Catppuccin Mocha theme
-- ⚡ Lightweight and fast
-- 🔒 Privacy-focused - all data stored locally
+## features
 
-## Installation
+- simple url redirects
+- preserve path option - redirects maintain the full path
+- edit rules - modify existing rules easily
+- copy/paste rules - share rules between devices
+- export/import - backup and restore all rules
+- collapsible rules - keep your list organized
+- catppuccin mocha theme
+- lightweight and fast
+- privacy-focused - all data stored locally
 
-1. Open Brave browser
-2. Navigate to `brave://extensions/`
-3. Enable "Developer mode" in the top right
-4. Click "Load unpacked"
-5. Select the `gn` folder
+## installation
 
-## Usage
+1. open brave browser
+2. navigate to `brave://extensions/`
+3. enable "developer mode" in the top right
+4. click "load unpacked"
+5. select the `gn` folder
 
-1. Click the extension icon in your toolbar
-2. Enter the "From" URL (e.g., `github.com`)
-3. Enter the "To" URL (e.g., `github.io`)
-4. Check "Preserve Path" if you want to maintain the URL path during redirect
-5. Click "Add Rule"
+## usage
 
-### Managing Rules
+### adding rules
 
-- **Edit**: Click the "Edit" button to modify a rule
-- **Copy**: Click "Copy" to copy a rule to clipboard, then paste into the form
-- **Delete**: Remove unwanted rules
-- **Collapse**: Click on a rule header to collapse/expand it
-- **Collapse All/Expand All**: Bulk collapse or expand all rules
+1. click the extension icon in your toolbar
+2. enter the "from" url (e.g., `github.com`)
+3. enter the "to" url (e.g., `github.io`)
+4. check "preserve path" if you want to maintain the url path during redirect
+5. click "add"
 
-### Export/Import
+### managing rules
 
-- **Export All**: Download all rules as a JSON file for backup
-- **Import**: Load rules from a previously exported JSON file
+- edit: click the "edit" button to modify a rule
+- copy: click "copy" to copy a rule to clipboard, then paste into the form
+- delete: remove unwanted rules
+- collapse: click on a rule header to collapse/expand it
+- double-click the "rules" header to delete all rules
 
-### Preserve Path Feature
+### preserve path feature
 
-When **Preserve Path** is enabled:
+when preserve path is enabled:
 - `github.com/user/repo` → `github.io/user/repo`
-- The entire path, query parameters, and hash are preserved
+- the entire path, query parameters, and hash are preserved
 
-When disabled:
+when disabled:
 - `github.com/user/repo` → `github.io`
-- Only redirects to the base URL
+- only redirects to the base url
 
-## Example Use Cases
+### export/import
 
-- Redirect from a shut-down domain to its backup
-- Force HTTPS versions of sites
-- Redirect to alternative frontends (e.g., YouTube → Invidious)
-- Personal domain shortcuts
+- export: download all rules as a json file for backup
+- import: load rules from a previously exported json file
 
-## Theme
+## example use cases
 
-Uses the beautiful [Catppuccin Mocha](https://github.com/catppuccin/catppuccin) color palette.
+- redirect from a shut-down domain to its backup
+- force https versions of sites
+- redirect to alternative frontends (e.g., youtube → invidious)
+- personal domain shortcuts
 
-## License
+## theme
 
-MIT License - see LICENSE file for details
+uses the beautiful catppuccin mocha color palette.
+
+## license
+
+mit license - see license file for details

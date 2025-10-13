@@ -34,6 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
   importFile.addEventListener('change', importRules);
   rulesHeader.addEventListener('click', toggleSection);
 
+  // Add double-click on rules header to clear all
+  rulesHeader.addEventListener('dblclick', (e) => {
+    if (confirm('Delete all rules? This cannot be undone.')) {
+      chrome.storage.sync.set({ rules: [] }, () => {
+        collapsedRules.clear();
+        saveCollapsedState();
+        loadRules();
+        notifyBackgroundScript();
+        showNotification('all rules deleted');
+      });
+    }
+  });
+
   function addRule() {
     const from = fromUrlInput.value.trim();
     const to = toUrlInput.value.trim();
@@ -174,20 +187,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chrome.storage.sync.get(['rules'], (result) => {
           const existingRules = result.rules || [];
-          const newRules = importedRules.map(rule => ({
-            ...rule,
-            id: Date.now() + Math.random()
+          const timestamp = Date.now();
+          const newRules = importedRules.map((rule, index) => ({
+            from: rule.from,
+            to: rule.to,
+            preservePath: rule.preservePath || false,
+            id: timestamp + index
           }));
           const allRules = [...existingRules, ...newRules];
           
           chrome.storage.sync.set({ rules: allRules }, () => {
             loadRules();
             notifyBackgroundScript();
-            showNotification(`imported ${newRules.length} rule(s)`)
+            showNotification(`imported ${newRules.length} rule(s)`);
           });
         });
       } catch (e) {
-        showNotification('Error reading file');
+        showNotification('error reading file');
       }
     };
     reader.readAsText(file);
@@ -306,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (editingRuleId === id) {
           resetForm();
         }
+        collapsedRules.delete(id);
         loadRules();
         notifyBackgroundScript();
       });

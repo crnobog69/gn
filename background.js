@@ -27,6 +27,9 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
   const url = new URL(details.url);
   
   for (const rule of rules) {
+    // Skip disabled rules
+    if (rule.enabled === false) continue;
+    
     const fromPattern = normalizeUrl(rule.from);
     const urlHost = normalizeUrl(url.hostname);
     

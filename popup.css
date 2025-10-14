@@ -8,7 +8,7 @@ body {
   width: 380px;
   background: #1e1e2e;
   color: #cdd6f4;
-  font-family: 'Courier New', Consolas, Monaco, monospace;
+  font-family: "JetBrains Mono", "Courier New", Consolas, Monaco, monospace;
   font-size: 13px;
 }
 
@@ -52,7 +52,7 @@ input[type="text"] {
   border-radius: 4px;
   color: #cdd6f4;
   outline: none;
-  font-family: 'Courier New', Consolas, Monaco, monospace;
+  font-family: "JetBrains Mono", "Courier New", Consolas, Monaco, monospace;
   font-size: 13px;
 }
 
@@ -124,7 +124,7 @@ button {
   color: #a6e3a1;
   border: 1px solid #45475a;
   border-radius: 4px;
-  font-family: 'Courier New', Consolas, Monaco, monospace;
+  font-family: "JetBrains Mono", "Courier New", Consolas, Monaco, monospace;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.15s;
@@ -261,6 +261,9 @@ button:hover {
   padding: 8px;
   cursor: pointer;
   user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .rule-header:hover {
@@ -273,6 +276,7 @@ button:hover {
   gap: 6px;
   font-size: 12px;
   word-break: break-word;
+  flex: 1;
 }
 
 .collapse-icon {
@@ -296,6 +300,48 @@ button:hover {
 
 .rule-to {
   color: #a6e3a1;
+}
+
+.rule-toggle {
+  position: relative;
+  width: 32px;
+  height: 16px;
+  background: #45475a;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.rule-toggle.active {
+  background: #a6e3a1;
+}
+
+.rule-toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: #1e1e2e;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.rule-toggle.active::after {
+  transform: translateX(16px);
+}
+
+.rule-item.disabled .rule-from,
+.rule-item.disabled .rule-to,
+.rule-item.disabled .rule-arrow {
+  opacity: 0.4;
+}
+
+.rule-item.disabled .rule-badge {
+  opacity: 0.4;
 }
 
 .rule-content {

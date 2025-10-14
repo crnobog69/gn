@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chrome.storage.sync.get(['rules'], (result) => {
       const rules = result.rules || [];
-      rules.push({ from, to, preservePath, id: Date.now() });
+      rules.push({ from, to, preservePath, enabled: true, id: Date.now() });
       
       chrome.storage.sync.set({ rules }, () => {
         resetForm();
@@ -192,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             from: rule.from,
             to: rule.to,
             preservePath: rule.preservePath || false,
+            enabled: rule.enabled !== false,
             id: timestamp + index
           }));
           const allRules = [...existingRules, ...newRules];
@@ -230,6 +231,23 @@ document.addEventListener('DOMContentLoaded', () => {
     loadRules();
   }
 
+  function toggleRuleEnabled(id) {
+    chrome.storage.sync.get(['rules'], (result) => {
+      const rules = result.rules.map(rule => 
+        rule.id === id 
+          ? { ...rule, enabled: !rule.enabled }
+          : rule
+      );
+      
+      chrome.storage.sync.set({ rules }, () => {
+        loadRules();
+        notifyBackgroundScript();
+        const rule = rules.find(r => r.id === id);
+        showNotification(rule.enabled ? 'rule enabled' : 'rule disabled');
+      });
+    });
+  }
+
   function saveCollapsedState() {
     chrome.storage.local.set({ 
       collapsedRules: Array.from(collapsedRules),
@@ -261,8 +279,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       rulesList.innerHTML = rules.map(rule => {
         const isCollapsed = collapsedRules.has(rule.id);
+        const isEnabled = rule.enabled !== false;
         return `
-        <div class="rule-item ${isCollapsed ? 'collapsed' : ''}" data-id="${rule.id}">
+        <div class="rule-item ${isCollapsed ? 'collapsed' : ''} ${!isEnabled ? 'disabled' : ''}" data-id="${rule.id}">
           <div class="rule-header" data-id="${rule.id}">
             <div class="rule-title">
               <span class="collapse-icon">▼</span>
@@ -270,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <span class="rule-arrow">→</span>
               <span class="rule-to">${escapeHtml(rule.to)}</span>
             </div>
+            <div class="rule-toggle ${isEnabled ? 'active' : ''}" data-id="${rule.id}"></div>
           </div>
           <div class="rule-content">
             ${rule.preservePath ? '<span class="rule-badge">path</span>' : '<span></span>'}
@@ -284,8 +304,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       document.querySelectorAll('.rule-header').forEach(header => {
         header.addEventListener('click', (e) => {
-          const id = parseInt(e.currentTarget.dataset.id);
-          toggleCollapse(id);
+          if (!e.target.classList.contains('rule-toggle')) {
+            const id = parseInt(e.currentTarget.dataset.id);
+            toggleCollapse(id);
+          }
+        });
+      });
+
+      document.querySelectorAll('.rule-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = parseInt(e.target.dataset.id);
+          toggleRuleEnabled(id);
         });
       });
 

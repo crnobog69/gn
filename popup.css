@@ -598,6 +598,23 @@ button:hover {
   max-height: 400px;
 }
 
+.templates-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.templates-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.templates-content::-webkit-scrollbar-thumb {
+  background: #45475a;
+  border-radius: 3px;
+}
+
+.templates-content::-webkit-scrollbar-thumb:hover {
+  background: #585b70;
+}
+
 .template-item {
   display: flex;
   flex-direction: column;

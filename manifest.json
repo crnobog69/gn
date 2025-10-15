@@ -1,16 +1,10 @@
 {
   "manifest_version": 3,
   "name": "gn",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The final command for a peaceful web.",
-  "permissions": [
-    "storage",
-    "tabs",
-    "webNavigation"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "permissions": ["storage", "tabs", "webNavigation"],
+  "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
   },

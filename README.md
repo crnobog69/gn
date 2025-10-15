@@ -1,6 +1,6 @@
 # gn
 
-a simple url redirect extension for brave browser (chromium).
+a simple, privacy-focused url redirect extension for brave/chromium browsers.
 
 ## download
 
@@ -8,11 +8,18 @@ a simple url redirect extension for brave browser (chromium).
 git clone https://github.com/crnobog69/gn.git
 ```
 
-or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip) ( <- click )
+or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip)
 
 ## features
 
 - simple url redirects
+- **search/filter rules** by url
+- **wildcard pattern matching** (e.g. `*.github.com`)
+- **rule categories** (social, dev, news, etc.)
+- **usage statistics** (see most used rules)
+- **bulk operations** (enable/disable/delete multiple rules)
+- **keyboard shortcuts** for power users
+- **rule templates** for common privacy redirects
 - preserve path option - redirects maintain the full path
 - edit rules - modify existing rules easily
 - copy/paste rules - share rules between devices
@@ -37,16 +44,34 @@ or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip
 1. click the extension icon in your toolbar
 2. enter the "from" url (e.g., `github.com`)
 3. enter the "to" url (e.g., `github.io`)
-4. check "preserve path" if you want to maintain the url path during redirect
-5. click "add"
+4. select a category (optional)
+5. check "preserve path" if you want to maintain the url path during redirect
+6. click "add"
 
 ### managing rules
 
+- search: use the search box to filter rules
+- wildcards: use `*` in the "from" url for pattern matching
+- categories: organize rules by category, color-coded
+- stats: click "stats" to see most used rules
+- bulk: select multiple rules to enable/disable/delete in bulk
 - edit: click the "edit" button to modify a rule
 - copy: click "copy" to copy a rule to clipboard, then paste into the form
 - delete: remove unwanted rules
 - collapse: click on a rule header to collapse/expand it
 - double-click the "rules" header to delete all rules
+
+### keyboard shortcuts
+
+- `Ctrl+N`: focus new rule form
+- `Ctrl+F`: focus search box
+- `Ctrl+Enter`: add/update rule
+- `Escape`: cancel/close modals
+- `Ctrl+A` (in search): select all visible rules
+
+### rule templates
+
+- click "templates" to quickly add privacy-focused redirects (e.g., YouTube → Invidious)
 
 ### preserve path feature
 
@@ -69,6 +94,7 @@ when disabled:
 - force https versions of sites
 - redirect to alternative frontends (e.g., youtube → invidious)
 - personal domain shortcuts
+- privacy: auto-redirect to open-source frontends
 
 ## theme
 

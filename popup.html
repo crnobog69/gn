@@ -18,6 +18,14 @@
       <div class="add-rule">
         <input type="text" id="fromUrl" placeholder="from" />
         <input type="text" id="toUrl" placeholder="to" />
+        <select id="categorySelect">
+          <option value="">no category</option>
+          <option value="social">social</option>
+          <option value="dev">development</option>
+          <option value="news">news</option>
+          <option value="entertainment">entertainment</option>
+          <option value="other">other</option>
+        </select>
         <label class="checkbox-label">
           <input type="checkbox" id="preservePath" />
           <span class="checkbox-custom"></span>
@@ -32,6 +40,12 @@
       <div class="toolbar">
         <button id="exportBtn">export</button>
         <button id="importBtn">import</button>
+        <button id="statsBtn">stats</button>
+        <button id="templatesBtn">templates</button>
+      </div>
+
+      <div class="search-section">
+        <input type="text" id="searchInput" placeholder="search rules..." />
       </div>
 
       <div class="rules-section">
@@ -40,11 +54,50 @@
           <span class="section-title">rules</span>
           <span class="rules-count" id="rulesCount">0</span>
         </div>
+
+        <div class="bulk-toolbar" id="bulkToolbar" style="display: none">
+          <label class="checkbox-label">
+            <input type="checkbox" id="selectAllCheckbox" />
+            <span class="checkbox-custom"></span>
+            <span>select all</span>
+          </label>
+          <div class="bulk-actions">
+            <button id="bulkEnableBtn">enable</button>
+            <button id="bulkDisableBtn">disable</button>
+            <button id="bulkDeleteBtn">delete</button>
+          </div>
+        </div>
+
         <div class="rules-list" id="rulesList"></div>
       </div>
     </div>
 
     <input type="file" id="importFile" accept=".json" style="display: none" />
+
+    <div id="statsModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>usage statistics</h2>
+          <button id="closeStats" class="close-btn">×</button>
+        </div>
+        <div id="statsContent" class="stats-content">
+          <!-- Stats will be populated here -->
+        </div>
+      </div>
+    </div>
+
+    <div id="templatesModal" class="modal" style="display: none">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>rule templates</h2>
+          <button id="closeTemplates" class="close-btn">×</button>
+        </div>
+        <div id="templatesContent" class="templates-content">
+          <!-- Templates will be populated here -->
+        </div>
+      </div>
+    </div>
+
     <script src="popup.js"></script>
   </body>
 </html>

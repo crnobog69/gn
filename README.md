@@ -40,6 +40,16 @@ or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip
 4. click "load unpacked"
 5. select the `gn` folder
 
+## update
+
+1. pull the latest changes from the repository:
+   ```bash
+   git pull origin main
+   ```
+2. in brave/chromium, go to [`brave://extensions/`](brave://extensions/) or [`chrome://extensions/`](chrome://extensions/)
+3. if the extension is already loaded, click the "refresh" (⟳) button on the `gn` extension card, or remove and re-add the folder using "load unpacked"
+4. your settings and rules will be preserved
+
 ## usage
 
 ### adding rules

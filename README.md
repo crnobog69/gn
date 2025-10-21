@@ -1,6 +1,7 @@
 # gn
 
-> [!NOTE] this extension is only tested in the brave browser. it should work in other chromium-based browsers, but brave is the only officially tested environment.
+> [!NOTE] 
+> this extension is only tested in the brave browser. it should work in other chromium-based browsers, but brave is the only officially tested environment.
 
 a simple, privacy-focused url redirect extension for brave/chromium browsers.
 

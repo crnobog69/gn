@@ -35,7 +35,7 @@ or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip
 ## installation
 
 1. open brave/chromium browser
-2. navigate to [`brave://extensions/`](https://brave.com)
+2. navigate to [`brave://extensions/`](brave://extensions/)
 3. enable "developer mode" in the top right
 4. click "load unpacked"
 5. select the `gn` folder

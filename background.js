@@ -1,28 +1,20 @@
-let rules = [];
-
+// Service worker lifecycle - no persistent memory
 chrome.runtime.onInstalled.addListener(() => {
-  loadRules();
+  console.log('Extension installed/updated');
 });
 
 chrome.runtime.onStartup.addListener(() => {
-  loadRules();
+  console.log('Browser started');
 });
 
-chrome.runtime.onMessage.addListener((message) => {
-  if (message.action === 'rulesUpdated') {
-    loadRules();
-  }
-});
-
-function loadRules() {
-  chrome.storage.sync.get(['rules'], (result) => {
-    rules = result.rules || [];
-    console.log('Loaded rules:', rules);
-  });
-}
-
-chrome.webNavigation.onBeforeNavigate.addListener((details) => {
+chrome.webNavigation.onBeforeNavigate.addListener(async (details) => {
   if (details.frameId !== 0) return;
+  
+  // Always load rules fresh from storage to handle service worker sleep/wake cycles
+  const result = await chrome.storage.sync.get(['rules']);
+  const rules = result.rules || [];
+  
+  if (rules.length === 0) return;
   
   const url = new URL(details.url);
   

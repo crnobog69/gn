@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: 'YouTube → Invidious',
       description: 'Privacy-focused YouTube alternative',
-      example: 'youtube.com → invidious.snopyta.org',
+      example: 'youtube.com → yewtu.be',
       from: 'youtube.com',
-      to: 'invidious.snopyta.org',
+      to: 'yewtu.be',
       category: 'social',
       preservePath: true
     },
@@ -63,15 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
       preservePath: true
     },
     {
-      title: 'Instagram → Bibliogram',
-      description: 'Privacy-focused Instagram alternative',
-      example: 'instagram.com → bibliogram.art',
-      from: 'instagram.com',
-      to: 'bibliogram.art',
-      category: 'social',
-      preservePath: true
-    },
-    {
       title: 'Google → DuckDuckGo',
       description: 'Privacy-focused search engine',
       example: 'google.com → duckduckgo.com',
@@ -87,6 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
       from: 'medium.com',
       to: 'scribe.rip',
       category: 'news',
+      preservePath: true
+    },
+    {
+      title: 'SoundCloud → Soundcloak',
+      description: 'Privacy-focused SoundCloud alternative',
+      example: 'soundcloud.com → sc.crnbg.org',
+      from: 'soundcloud.com',
+      to: 'sc.crnbg.org',
+      category: 'entertainment',
+      preservePath: true
+    },
+    {
+      title: 'Genius → Dumb',
+      description: 'Privacy-focused Genius alternative',
+      example: 'genius.com → dumb.crnbg.org',
+      from: 'genius.com',
+      to: 'dumb.crnbg.org',
+      category: 'entertainment',
       preservePath: true
     }
   ];

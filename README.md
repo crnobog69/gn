@@ -1,6 +1,6 @@
 # gn
 
-> [!NOTE] 
+> [!NOTE]
 > this extension is only tested in the brave browser. it should work in other chromium-based browsers, but brave is the only officially tested environment.
 
 a simple, privacy-focused url redirect extension for brave/chromium browsers.
@@ -43,9 +43,11 @@ or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip
 ## update
 
 1. pull the latest changes from the repository:
+
    ```bash
    git pull origin main
    ```
+
 2. in brave/chromium, go to [`brave://extensions/`](brave://extensions/) or [`chrome://extensions/`](chrome://extensions/)
 3. if the extension is already loaded, click the "refresh" (⟳) button on the `gn` extension card, or remove and re-add the folder using "load unpacked"
 4. your settings and rules will be preserved
@@ -89,10 +91,12 @@ or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip
 ### preserve path feature
 
 when preserve path is enabled:
+
 - `github.com/user/repo` → `github.io/user/repo`
 - the entire path, query parameters, and hash are preserved
 
 when disabled:
+
 - `github.com/user/repo` → `github.io`
 - only redirects to the base url
 
@@ -108,6 +112,16 @@ when disabled:
 - redirect to alternative frontends (e.g., youtube → invidious)
 - personal domain shortcuts
 - privacy: auto-redirect to open-source frontends
+
+## troubleshooting
+
+### extension stops working after a while
+
+this is fixed in the latest version. the extension now properly handles chromium's service worker lifecycle by loading rules fresh on each navigation event. if you're experiencing this issue:
+
+1. update to the latest version (see [update](#update) section)
+2. reload the extension in brave://extensions/
+3. if the problem persists, check the console for errors (right-click extension icon → inspect popup)
 
 ## theme
 

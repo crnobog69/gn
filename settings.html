@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gn - settings</title>
+    <link rel="stylesheet" href="settings.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="settings-container">
+      <header>
+        <h1>gn settings</h1>
+        <p class="subtitle">configure special redirect features</p>
+      </header>
+
+      <div class="settings-content">
+        <!-- Fandom Redirect -->
+        <section class="setting-section">
+          <div class="setting-header">
+            <div class="setting-info">
+              <h2>fandom redirect</h2>
+              <p class="setting-description">
+                automatically redirect all *.fandom.com wikis to a phantom instance
+              </p>
+            </div>
+            <div class="rule-toggle" id="fandomToggle"></div>
+          </div>
+          
+          <div class="setting-content" id="fandomContent" style="display: none;">
+            <label for="fandomInstance">phantom instance url:</label>
+            <input
+              type="text"
+              id="fandomInstance"
+              placeholder="phantom.crnbg.org"
+            />
+            <p class="setting-example">
+              example: attackontitan.fandom.com/wiki/Page → phantom.crnbg.org/attackontitan/wiki/Page
+            </p>
+          </div>
+        </section>
+
+        <!-- Future custom redirects can be added here -->
+        <!--
+        <section class="setting-section">
+          <div class="setting-header">
+            <div class="setting-info">
+              <h2>reddit redirect</h2>
+              <p class="setting-description">
+                automatically redirect reddit.com to alternative frontends
+              </p>
+            </div>
+            <div class="rule-toggle" id="redditToggle"></div>
+          </div>
+          
+          <div class="setting-content" id="redditContent" style="display: none;">
+            <label for="redditInstance">reddit instance url:</label>
+            <input
+              type="text"
+              id="redditInstance"
+              placeholder="libreddit.de"
+            />
+          </div>
+        </section>
+        -->
+
+      </div>
+
+      <footer>
+        <button id="backBtn">back to rules</button>
+      </footer>
+    </div>
+
+    <script src="settings.js"></script>
+  </body>
+</html>

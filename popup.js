@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const templatesModal = document.getElementById('templatesModal');
   const closeTemplates = document.getElementById('closeTemplates');
   const templatesContent = document.getElementById('templatesContent');
+  const extrasBtn = document.getElementById('extrasBtn');
   
   let editingRuleId = null;
   let collapsedRules = new Set();
@@ -130,6 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
   closeTemplates.addEventListener('click', hideTemplates);
   templatesModal.addEventListener('click', (e) => {
     if (e.target === templatesModal) hideTemplates();
+  });
+  extrasBtn.addEventListener('click', () => {
+    chrome.tabs.create({ url: chrome.runtime.getURL('settings.html') });
   });
 
   // Add double-click on rules header to clear all
@@ -569,11 +573,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showStats() {
     Promise.all([
-      new Promise(resolve => chrome.storage.sync.get(['rules'], resolve)),
-      new Promise(resolve => chrome.storage.local.get(['ruleStats'], resolve))
-    ]).then(([rulesResult, statsResult]) => {
-      const rules = rulesResult.rules || [];
+      new Promise(resolve => chrome.storage.sync.get(['rules', 'fandomRedirect'], resolve)),
+      new Promise(resolve => chrome.storage.local.get(['ruleStats', 'fandomStats'], resolve))
+    ]).then(([syncResult, statsResult]) => {
+      const rules = syncResult.rules || [];
+      const fandomSettings = syncResult.fandomRedirect || { enabled: false };
       const stats = statsResult.ruleStats || {};
+      const fandomStats = statsResult.fandomStats || null;
       
       const ruleMap = rules.reduce((map, rule) => {
         map[rule.id] = rule;
@@ -585,10 +591,24 @@ document.addEventListener('DOMContentLoaded', () => {
         .sort(([, a], [, b]) => b.count - a.count)
         .slice(0, 10); // Top 10
       
-      if (sortedStats.length === 0) {
-        statsContent.innerHTML = '<div class="empty-state">no usage data yet</div>';
-      } else {
-        statsContent.innerHTML = sortedStats.map(([ruleId, stat]) => {
+      let html = '';
+      
+      // Add fandom stats if available
+      if (fandomStats && fandomStats.count > 0 && fandomSettings.enabled) {
+        html += `
+          <div class="stat-item">
+            <div class="stat-rule">
+              <div>*.fandom.com → ${escapeHtml(fandomSettings.instance || 'phantom.crnbg.org')}</div>
+              <div class="stat-last-used">last used: ${fandomStats.lastUsed}</div>
+            </div>
+            <div class="stat-count">${fandomStats.count}</div>
+          </div>
+        `;
+      }
+      
+      // Add regular rule stats
+      if (sortedStats.length > 0) {
+        html += sortedStats.map(([ruleId, stat]) => {
           const rule = ruleMap[ruleId];
           return `
             <div class="stat-item">
@@ -600,6 +620,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           `;
         }).join('');
+      }
+      
+      if (html === '') {
+        statsContent.innerHTML = '<div class="empty-state">no usage data yet</div>';
+      } else {
+        statsContent.innerHTML = html;
       }
       
       statsModal.style.display = 'flex';

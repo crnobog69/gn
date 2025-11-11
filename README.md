@@ -16,6 +16,7 @@ or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip
 ## features
 
 - simple url redirects
+- **fandom redirect** - automatically redirects all `*.fandom.com` sites to phantom instances
 - **search/filter rules** by url
 - **wildcard pattern matching** (e.g. `*.github.com`)
 - **rule categories** (social, dev, news, etc.)
@@ -62,6 +63,14 @@ or download [`.zip`](https://github.com/crnobog69/gn/archive/refs/heads/main.zip
 4. select a category (optional)
 5. check "preserve path" if you want to maintain the url path during redirect
 6. click "add"
+
+### extras - special redirects
+
+click the "extras" button to open the settings page with special redirect features:
+
+- **fandom redirect**: automatically redirect all `*.fandom.com` wikis to phantom instances
+  - example: `attackontitan.fandom.com/wiki/Page` → `phantom.crnbg.org/attackontitan/wiki/Page`
+- more custom redirects will be added in future updates
 
 ### managing rules
 

@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       title: 'YouTube → Invidious',
       description: 'Privacy-focused YouTube alternative',
-      example: 'youtube.com → yewtu.be',
+      example: 'youtube.com → inv.nadeko.net',
       from: 'youtube.com',
-      to: 'yewtu.be',
+      to: 'inv.nadeko.net',
       category: 'social',
       preservePath: true
     },
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
       preservePath: true
     },
     {
-      title: 'Google → DuckDuckGo',
+      title: 'Google → Brave Search',
       description: 'Privacy-focused search engine',
-      example: 'google.com → duckduckgo.com',
+      example: 'google.com → search.brave.com',
       from: 'google.com',
-      to: 'duckduckgo.com',
+      to: 'search.brave.com',
       category: 'other',
       preservePath: false
     },
